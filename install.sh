@@ -47,3 +47,4 @@ fi
 clear
 echo -e "\033[32mExecutando o programa principal...\033[0m"
 python3 main.py
+
