@@ -1,0 +1,41 @@
+clear
+
+function open_link {
+  command -v xdg-open &>/dev/null && {
+    xdg-open "$1"
+    sleep 5
+  }
+}
+
+echo "Abrindo perfis sociais..."
+open_link "https://instagram.com/edux.dev" &>/dev/null
+open_link "https://www.youtube.com/@edux-dev" &>/dev/null
+open_link "https://tiktok.com/@edux.dev" &>/dev/null
+
+if [[ -e /data/data/com.termux ]]; then
+  PKG_MANAGER="pkg"
+else
+  PKG_MANAGER="sudo apt-get"
+  if [[ $EUID -ne 0 ]]; then
+    echo "Por favor, execute este script como root (sudo)."
+    exit 1
+  fi
+fi
+
+if ! command -v python3 &>/dev/null; then
+  echo "Instalando Python3..."
+  $PKG_MANAGER update -y
+  $PKG_MANAGER install -y python3 python3-pip
+fi
+
+echo "Instalando os requisitos do programa..."
+python3 -m pip install --upgrade pip &>/dev/null
+if [[ -f requirements.txt ]]; then
+  python3 -m pip install -r requirements.txt
+else
+  echo "Arquivo requirements.txt não encontrado."
+fi
+
+clear
+echo "Executando o programa principal..."
+python3 main.py
