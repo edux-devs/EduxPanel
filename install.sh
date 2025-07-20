@@ -3,8 +3,8 @@ clear
 
 if [ -d ".git" ]; then
   echo -e "\033[34mAtualizando arquivos do repositório...\033[0m"
-  git fetch origin
-  git reset --hard origin/main
+  git fetch origin &>/dev/null
+  git reset --hard origin/main &>/dev/null
 fi
 
 function open_link {
@@ -32,7 +32,7 @@ fi
 if ! command -v python3 &>/dev/null; then
   echo "Instalando Python3..."
   $PKG_MANAGER update -y &>/dev/null && yes "" | $PKG_MANAGER upgrade -y &>/dev/null
-  $PKG_MANAGER install -y python3
+  $PKG_MANAGER install -y python3 &>/dev/null
   [[ "$PKG_MANAGER" == "pkg" ]] || $PKG_MANAGER install -y python3-pip &>/dev/null
 fi
 
