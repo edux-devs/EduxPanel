@@ -31,8 +31,8 @@ fi
 
 if ! command -v python3 &>/dev/null; then
   echo "Instalando Python3..."
-  $PKG_MANAGER update -y &>/dev/null && $PKG_MANAGER upgrade -y &>/dev/null
-  $PKG_MANAGER install -y python3 python3-pip &>/dev/null
+  $PKG_MANAGER update -y &>/dev/null && yes "" | $PKG_MANAGER upgrade -y &>/dev/null
+  [[ "$PKG_MANAGER" == "pkg" ]] || $PKG_MANAGER install -y python3 python3-pip &>/dev/null
 fi
 
 echo "Instalando os requisitos do programa..."
