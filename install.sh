@@ -1,4 +1,11 @@
+#!/bin/bash
 clear
+
+if [ -d ".git" ]; then
+  echo -e "\033[34mAtualizando arquivos do repositório...\033[0m"
+  git fetch origin
+  git reset --hard origin/main
+fi
 
 function open_link {
   command -v xdg-open &>/dev/null && {
@@ -24,7 +31,7 @@ fi
 
 if ! command -v python3 &>/dev/null; then
   echo "Instalando Python3..."
-  $PKG_MANAGER update -y && $PKG_MANAGER upgrade -y &>/dev/null
+  $PKG_MANAGER update -y &>/dev/null && $PKG_MANAGER upgrade -y &>/dev/null
   $PKG_MANAGER install -y python3 python3-pip &>/dev/null
 fi
 
@@ -37,5 +44,5 @@ else
 fi
 
 clear
-echo "Executando o programa principal..."
+echo -e "\033[32mExecutando o programa principal...\033[0m"
 python3 main.py
