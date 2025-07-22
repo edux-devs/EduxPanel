@@ -15,9 +15,11 @@ function open_link {
 }
 
 echo "Abrindo perfis sociais..."
+: '
 open_link "https://instagram.com/edux.dev" &>/dev/null
 open_link "https://www.youtube.com/@edux-dev" &>/dev/null
 open_link "https://tiktok.com/@edux.dev" &>/dev/null
+'
 
 if [[ -e /data/data/com.termux ]]; then
   PKG_MANAGER="pkg"
