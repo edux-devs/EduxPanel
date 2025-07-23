@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+#Autor: Eduardo
+
 try: from clear import clear
 except: from functions.clear import clear
 

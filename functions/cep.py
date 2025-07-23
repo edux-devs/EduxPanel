@@ -5,8 +5,10 @@ import requests
 import time
 try:
     from banner import banner
+    from returnMenu import returnMenu #type:ignore
 except:
     from functions.banner import banner #type:ignore
+    from functions.returnMenu import returnMenu #type:ignore 
 
 def cep():
     while True:
@@ -28,8 +30,7 @@ def cep():
             print(f'\033[1;34m║ • {i.capitalize(): <11}:\033[0;32m {str(req[i]): <28}\033[1;34m ║')
             time.sleep(0.01)
         print('╚' + '═'* 45 + '╝')
-        time.sleep(10)
-        #if retorneMenu() == True: return True
+        if returnMenu() == True: return True
 
 if __name__ == '__main__':
     cep()

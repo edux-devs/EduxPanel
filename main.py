@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-#Autor: Eduardo
-
+1
 import os
 import sys
 import importlib.util
@@ -43,7 +41,7 @@ def main():
     func = {1:cep, 2:ip} # type: ignore
     while True:
         bannerMenu() # type: ignore
-        option = input('\n\033[1;34m>_ Digite a opção: \033[1;36m').strip()
+        option = input('\n\033[1;34m ~$ Digite a opção: \033[1;36m').strip()
         if not option: continue
         if option.lower() == 'q': return 0
         if not option.isnumeric(): continue
@@ -54,4 +52,8 @@ def main():
             continue
         str(func[int(option)]())
 
-main()
+if __name__ == '__main__': 
+    main()
+else:
+    print('you cannot import this file')
+    exit()
