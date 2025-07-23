@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Eduardo
+#Autor: Eduardo
 
 from os import system, name
 from sys import argv

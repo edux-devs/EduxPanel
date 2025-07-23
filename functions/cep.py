@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-# Eduardo
+#Autor: Eduardo
 
 import requests
 import time
+
 try:
     from banner import banner
     from returnMenu import returnMenu #type:ignore
@@ -24,7 +25,7 @@ def cep():
                 time.sleep(2)
                 continue
             break               
-        req = requests.get(f'https://viacep.com.br/ws/01001000/json/').json()
+        req = requests.get(f'https://viacep.com.br/ws/{input_user}/json/').json()
         print('\033[1;34m╔═════════════════════════════════════════════╗') 
         for i in req.keys():
             print(f'\033[1;34m║ • {i.capitalize(): <11}:\033[0;32m {str(req[i]): <28}\033[1;34m ║')

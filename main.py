@@ -31,17 +31,11 @@ def importar_funcoes(pasta):
                 if callable(obj) and not nome.startswith("_"):
                     globals()[nome] = obj
 
-importar_funcoes("functions")
-
-def ip():
-    print('ip')
-    time.sleep(10)
-
 def main():
-    func = {1:cep, 2:ip} # type: ignore
+    func = {1:cep, 2:ip, 3:bancol} # type: ignore
     while True:
         bannerMenu() # type: ignore
-        option = input('\n\033[1;34m ~$ Digite a opção: \033[1;36m').strip()
+        option = input('\n\033[1;34m ~ $ Digite a opção: \033[1;36m').strip()
         if not option: continue
         if option.lower() == 'q': return 0
         if not option.isnumeric(): continue
@@ -52,7 +46,8 @@ def main():
             continue
         str(func[int(option)]())
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
+    importar_funcoes("functions") 
     main()
 else:
     print('you cannot import this file')

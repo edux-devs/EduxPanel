@@ -2,7 +2,7 @@
 #Autor: Eduardo
 
 try: from clear import clear
-except: from functions.clear import clear
+except: from functions.clear import clear #type:ignore
 
 def banner():
     clear()
