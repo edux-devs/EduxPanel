@@ -32,7 +32,7 @@ def importar_funcoes(pasta):
                     globals()[nome] = obj
 
 def main():
-    func = {1:cep, 2:ip, 3:bancol} # type: ignore
+    func = {1:cep, 2:ip, 3:banco} # type: ignore
     while True:
         bannerMenu() # type: ignore
         option = input('\n\033[1;34m ~ $ Digite a opção: \033[1;36m').strip()
