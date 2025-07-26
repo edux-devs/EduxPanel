@@ -1,4 +1,7 @@
-1
+#!/usr/bin/env python3
+#Autor: Eduardo
+#Versão 0.1.14
+
 import os
 import sys
 import importlib.util
@@ -32,7 +35,7 @@ def importar_funcoes(pasta):
                     globals()[nome] = obj
 
 def main():
-    func = {1:cep, 2:ip, 3:banco} # type: ignore
+    func = {1:cep, 2:ip, 3:banco, 4:queryInstagram, 5:ddd} # type: ignore
     while True:
         bannerMenu() # type: ignore
         option = input('\n\033[1;34m ~ $ Digite a opção: \033[1;36m').strip()

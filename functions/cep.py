@@ -17,7 +17,7 @@ def cep():
             if i == 3: return False
             banner()
             input_user = input('\033[34m ~$ Informe o CEP para a consulta:\033[1;36m ').strip().replace('-', '')
-            if input_user == '99' or input_user.lower() == 'q': return True
+            if input_user.lower() in ['99', 'q']: return True
             if not input_user: continue
             if not input_user.isnumeric(): continue
             if len(input_user) != 8:
