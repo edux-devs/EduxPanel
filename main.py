@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #Autor: Eduardo
-#Versão 0.1.14
+#Versão 0.1.15
 
 import os
 import sys
@@ -35,23 +35,30 @@ def importar_funcoes(pasta):
                     globals()[nome] = obj
 
 def main():
-    func = {1:cep, 2:ip, 3:banco, 4:queryInstagram, 5:ddd} # type: ignore
+    func = {1:cep, 2:ip, 3:banco, 4:queryInstagram, 5:ddd, 6:bin, 7:validarCartao} # type: ignore
     while True:
         bannerMenu() # type: ignore
-        option = input('\n\033[1;34m ~ $ Digite a opção: \033[1;36m').strip()
+        option = input('\n\033[1;34m ~ $ Digite a opção⎇\033[1;36m ').strip()
         if not option: continue
-        if option.lower() == 'q': return 0
-        if not option.isnumeric(): continue
-        if int(option) == 99 or int(option) == 0: return 0
-        if int(option) > 13:
-            print(' option invalida!')
+        if option.lower() in ['00', '0', '99', 'q']: return 0
+        if not readInput('numeric', option): continue #type:ignore
+        if int(option) > 7: 
+            print(' opção inválida!')
             time.sleep(1)
             continue
         str(func[int(option)]())
 
-if __name__ == '__main__':
-    importar_funcoes("functions") 
-    main()
+if __name__ == '__main__':    
+    importar_funcoes("functions")
+    try: main(), sair() #type:ignore
+    except KeyboardInterrupt:
+        print('\n\033[1;33m Programa interrompido pelo usuário')
+        time.sleep(2)
+        sair() #type:ignore
+    except EOFError: 
+        print('\n\033[1;33m Programa interrompido pelo usuário')
+        time.sleep(2)
+        sair() #type:ignore
 else:
-    print('you cannot import this file')
+    print('Você não pode importar esse arquivo!')
     exit()

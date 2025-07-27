@@ -16,7 +16,7 @@ def banco():
         for i in range(0, 4):
             if i == 3: return False
             banner()
-            input_user = input('\033[1;34m~ $ Informe o codigo para a consulta:\033[1;36m ').strip()
+            input_user = input('\033[1;34m~ $ Informe o codigo para a consulta⎇\033[1;36m ').strip()
             if input_user == '99' or input_user.lower() == 'q': return True
             if not input_user: continue
             if not input_user.isnumeric(): continue
