@@ -7,10 +7,12 @@ try:
     from clear import clear
     from banner import banner
     from returnMenu import returnMenu
+    from readInput import readInput
 except:
     from functions.clear import clear #type:ignore
     from functions.banner import banner #type:ignore
     from functions.returnMenu import returnMenu #type:ignore
+
 
 def validarCartao():
     while True:
@@ -44,7 +46,8 @@ def validarCartao():
         except Exception as e:
             print(e)
         
-        returnMenu()
+        if returnMenu(): return True
+
 
 if __name__ == '__main__':
     validarCartao()
