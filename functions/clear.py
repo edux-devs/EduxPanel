@@ -9,6 +9,7 @@ def clear():
         system('cls' if name == 'nt' else 'clear')
     except Exception as e:
         print(f'Erro: {e}\nArquivo: {argv[0]}')
+        exit()
 
 if __name__ == '__main__':
     clear()

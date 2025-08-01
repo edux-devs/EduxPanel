@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+#Autor: Eduardo
+
+import random
+import time
+
+try:
+    from banner import banner
+    from return_menu import return_menu 
+    from read_input import read_input 
+    from exiting import exiting
+except:
+    from functions.banner import banner #type:ignore
+    from functions.return_menu import return_menu #type:ignore
+    from functions.read_input import read_input #type:ignore
+    from functions.exiting import exiting #type:ignore
+
+def cnpj_forge():
+    while True:
+        banner()
+        var = ''
+        soma = 0
+        for i in range(0, 8):
+            var = var + str(random.randint(0,9))
+        var = var + '0001'
+        num = 6
+        for i in range(0, 12):
+            num -= 1
+            if num < 2: num = 9
+            soma += int(var[i:i+1]) * num
+        if (soma % 11) < 2: var = var + '0'
+        else: var = var + str(11 - (soma % 11))
+        soma = 0 
+        num = 6
+        for i in range(0, 13):
+            soma += int(var[i:i+1]) * num
+            num -= 1
+            if num < 2: num = 9
+        if (soma % 11) < 2: var = var + '0'
+        else: var = var + str(11 - (soma % 11))
+        input_user = input('\033[1;32m~#\033[1;36m Gerar CNPJ com Pontuação? (S/N)\n➤➤➤\033[0;37m ').strip().replace('-', '')
+        print('\033[1;34m'+ '─' * 44)
+        if input_user.lower() in ['99', 'q']: return True
+        if input_user.lower() in ['s', 'y', 'sim', 'yes']:
+            print(f'\033[1;33m{"• CNPJ gerado":<4} \033[0;37m▸ {var[0:2]}.{var[2:5]}.{var[5:8]}/{var[8:12]}-{var[12::]}\033[0;32m (Válido)\033[0m\n', end='')
+        else: 
+            print(f'\033[1;33m{"• CNPJ gerado":<4} \033[0;37m▸ {var}\033[0;32m (Válido)\033[0m\n', end='')
+        if return_menu(): return True
+
+if __name__ == '__main__':
+    cnpj_forge()
+
+# 00.000.000/0001-91
+

@@ -1,18 +1,43 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 #Autor: Eduardo
 
+import time
+import unicodedata
+
+funcoes_painel = {
+    "Banco Info": "Info",
+    "BIN Lookup": "Lookup",
+    "Cartão Checker": "Checker",
+    "Cartão Lookup": "Lookup",
+    "CEP Lookup": "Lookup",
+    "CNPJ Checker": "Checker",
+    "CNPJ Forge": "Forge",
+    "CNPJ Info": "Info",
+    "CPF Checker": "Checker",
+    "CPF Forge": "Forge",
+    "Covid19 Info": "Info",
+    "DDD Info": "Info",
+    "DDI Info": "Info",
+    "Instagram Info": "Info",
+    "IP Lookup": "Lookup",}
+'''
+    "RG Checker": "Checker",
+    "RG Forge": "Forge",
+    "Telefone Básico Lookup": "Lookup"
+}'''
+
+
 def menu():
-    print("\033[1;36m╔═════════════════════════════════════════════╗\033[0m")
-    print("\033[1;36m║\033[0m [\033[1;32m01\033[0m] - \033[1;33mConsultar CEP\033[0m                        \033[1;36m║")
-    print("\033[1;36m║\033[0m [\033[1;32m02\033[0m] - \033[1;33mConsultar IP\033[0m                         \033[1;36m║")
-    print("\033[1;36m║\033[0m [\033[1;32m03\033[0m] - \033[1;33mConsultar Banco\033[0m                      \033[1;36m║")
-    print("\033[1;36m║\033[0m [\033[1;32m04\033[0m] - \033[1;33mConsultar Instagram\033[0m                  \033[1;36m║")
-    print("\033[1;36m║\033[0m [\033[1;32m05\033[0m] - \033[1;33mConsultar DDD\033[0m                        \033[1;36m║")
-    print("\033[1;36m║\033[0m [\033[1;32m06\033[0m] - \033[1;33mConsultar BIN\033[0m                        \033[1;36m║")
-    print("\033[1;36m║\033[0m [\033[1;32m07\033[0m] - \033[1;33mValidar Cartão\033[0m                       \033[1;36m║")
-    print("\033[1;36m║\033[0m                                             \033[1;36m║")
-    print("\033[1;36m║\033[0m [\033[1;31m99\033[0m] - \033[1;31mSair do Painel\033[0m                       \033[1;36m║")
-    print("\033[1;36m╚═════════════════════════════════════════════╝\033[0m", end='')
-    
+    time.sleep(0.1)
+    for i, nome in enumerate(sorted(funcoes_painel.keys(), key=lambda x: unicodedata.normalize('NFKD', x).encode('ASCII', 'ignore').decode('ASCII').lower()), 1):
+        print(f'\033[1;33m{str(i).zfill(2)} \033[0;37m▸ {nome}')
+        time.sleep(0.01)
+
+    print('\033[1;34m' + '─' * 44)
+    print('\033[1;33m98 \033[0;37m▸ redes socias')
+    print('\033[1;33m99 \033[0;37m▸ Sair')
+    print('\033[1;34m' + '─' * 44)
+    print('\033[1;32m~# \033[1;36mDigite o número da opção ➤ \033[0m', end='')
+
 if __name__ == '__main__':
     menu()

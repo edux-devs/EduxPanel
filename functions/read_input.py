@@ -5,51 +5,37 @@ import time
 import re
 import sys
 
-def readInput(typ: str, x: str) -> bool:
+def read_input(typ: str, x: str) -> bool:
     typ = typ.lower()
     match typ:
         case 'numeric':
-            if x.isnumeric():
-                return True
+            if x.isnumeric(): return True
             print('\033[1;33m[!] Digite apenas números!\033[0m')
-
         case 'isalpha':
-            if x.isalpha():
-                return True
+            if x.isalpha():return True
             print('\033[1;33m[!] Digite apenas letras!\033[0m')
-
         case 'isalnum':
-            if x.isalnum():
-                return True
+            if x.isalnum(): return True
             print('\033[1;33m[!] Digite apenas letras e números!\033[0m')
-
         case 'empty':
             if not x.strip():
                 print('\033[1;33m[!] Digite alguma coisa!\033[0m')
+                time.sleep(2)
                 return True
             return False
-
         case 'instagram_user':
-            if re.fullmatch(r"(?!.*\.\.)(?!\.)[a-zA-Z0-9._]{1,30}(?<!\.)", x):
-                return True
+            if re.fullmatch(r"(?!.*\.\.)(?!\.)[a-zA-Z0-9._]{1,30}(?<!\.)", x): return True
             print('\033[1;33m[!] Username inválido. Use apenas letras, números, pontos ou underline. Máx 30 caracteres.\033[0m')
-
         case 'instagram_id':
-            if x.isdigit() and 6 < len(x) < 25:  # IDs costumam ter mais de 6 e menos de 25 dígitos
-                return True
+            if x.isdigit() and 6 < len(x) < 25: return True
             print('\033[1;33m[!] ID inválido. Deve conter apenas números.\033[0m')
-
-        case _:
+        case _: 
             print(f'\033[1;31m[!] Tipo de validação desconhecido: {typ}\033[0m')
-
     time.sleep(2)
     return False
 
 if __name__ == '__main__':
     if len(sys.argv) > 2:
-        if readInput(sys.argv[1], sys.argv[2]):
-            print('True')
-        else:
-            print('Falsen')
-    else:
-        print('./readInput type $variavel')
+        if read_input(sys.argv[1], sys.argv[2]): print('True')
+        else: print('Falsen')
+    else: print(f'./{sys.argv[0]} type $variavel')

@@ -1,6 +1,6 @@
-#!/bin/bash
-clear
+#!/usr/bin/env bash
 
+clear
 if [ -d ".git" ]; then
   echo -e "\033[34mAtualizando arquivos do repositório...\033[0m"
   git fetch origin &>/dev/null
@@ -15,11 +15,12 @@ function open_link {
 }
 
 echo "Abrindo perfis sociais..."
-: '
-open_link "https://instagram.com/edux.dev" &>/dev/null
-open_link "https://www.youtube.com/@edux-dev" &>/dev/null
+open_link "https://instagram.com/edux.devs" &>/dev/null
+sleep 4
+open_link "https://www.youtube.com/@edux-devs" &>/dev/null
+sleep 4
 open_link "https://tiktok.com/@edux.dev" &>/dev/null
-'
+sleep 4
 
 if [[ -e /data/data/com.termux ]]; then
   PKG_MANAGER="pkg"
@@ -47,6 +48,9 @@ else
 fi
 
 clear
+pip install -r requirements.txt
+touch .installed
 echo -e "\033[32mExecutando o programa principal...\033[0m"
+sleep 1
 python3 main.py
 

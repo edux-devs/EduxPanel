@@ -1,20 +1,15 @@
 #!/usr/bin/env python3
 #Autor: Eduardo
-#Versão 0.1.15
-
-import os
-import sys
-import importlib.util
-import requests # type: ignore
-import time
-
-#variables
-#publicIp = requests.get('https://ifconfig.me').text
+#Versão 1.0.0
 
 # importar arquivos
 import os
 import sys
 import importlib.util
+import time
+
+#variables
+# var = here
 
 # função de import
 sys.path.append(os.path.abspath("."))
@@ -35,30 +30,31 @@ def importar_funcoes(pasta):
                     globals()[nome] = obj
 
 def main():
-    func = {1:cep, 2:ip, 3:banco, 4:queryInstagram, 5:ddd, 6:bin, 7:validarCartao} # type: ignore
+    func = {1:banco_query, 2:bin_query, 3:cartao_checker, 4:cartao_query, 5:cep_query, 6:cnpj_checker, 7:cnpj_forge, 8:cnpj_query, 9:covid19_query, 10:cpf_checker, 11:cpf_forge, 12:ddd_query, 13:ddi_query, 14:instagram_query, 15:ip_query} # type: ignore
     while True:
-        bannerMenu() # type: ignore
-        option = input('\n\033[1;34m ~ $ Digite a opção⎇\033[1;36m ').strip()
+        banner_menu() # type: ignore
+        option = input().strip()
         if not option: continue
         if option.lower() in ['00', '0', '99', 'q']: return 0
-        if not readInput('numeric', option): continue #type:ignore
-        if int(option) > 7: 
+        if not read_input('numeric', option): continue #type:ignore
+        if 98 > int(option) > 18: 
             print(' opção inválida!')
             time.sleep(1)
             continue
         str(func[int(option)]())
 
-if __name__ == '__main__':    
+if __name__ == '__main__': 
+    if os.path.exists('.installed'):
+        print("Execute o arquivo install.sh primeiro\n bash install.sh")
+        sys.exit(0)    
     importar_funcoes("functions")
-    try: main(), sair() #type:ignore
+    try: main(), exiting() #type:ignore
     except KeyboardInterrupt:
         print('\n\033[1;33m Programa interrompido pelo usuário')
-        time.sleep(2)
-        sair() #type:ignore
+        exiting() #type:ignore
     except EOFError: 
         print('\n\033[1;33m Programa interrompido pelo usuário')
-        time.sleep(2)
-        sair() #type:ignore
+        exiting() #type:ignore
 else:
     print('Você não pode importar esse arquivo!')
-    exit()
+    exiting() #type:ignore
