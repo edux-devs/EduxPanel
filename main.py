@@ -44,7 +44,7 @@ def main():
         str(func[int(option)]())
 
 if __name__ == '__main__': 
-    if os.path.exists('.installed'):
+    if not os.path.exists('.installed'):
         print("Execute o arquivo install.sh primeiro\n bash install.sh")
         exit()    
     importar_funcoes("functions")
