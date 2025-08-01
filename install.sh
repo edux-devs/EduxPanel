@@ -33,8 +33,9 @@ else
 fi
 
 if ! command -v python3 &>/dev/null; then
-  echo "Instalando Python3..."
+  echo "Atualizando pacotes..."
   $PKG_MANAGER update -y &>/dev/null && yes "" | $PKG_MANAGER upgrade -y &>/dev/null
+  echo "Instalando Python3..."
   $PKG_MANAGER install -y python3 &>/dev/null
   [[ "$PKG_MANAGER" == "pkg" ]] || $PKG_MANAGER install -y python3-pip &>/dev/null
 fi
@@ -42,7 +43,7 @@ fi
 echo "Instalando os requisitos do programa..."
 python3 -m pip install --upgrade pip &>/dev/null
 if [[ -f requirements.txt ]]; then
-  python3 -m pip install -r requirements.txt
+  python3 -m pip install -r requirements.txt &>/dev/null
 else
   echo "Arquivo requirements.txt não encontrado."
 fi
