@@ -46,7 +46,7 @@ def main():
 if __name__ == '__main__': 
     if os.path.exists('.installed'):
         print("Execute o arquivo install.sh primeiro\n bash install.sh")
-        sys.exit(0)    
+        exit()    
     importar_funcoes("functions")
     try: main(), exiting() #type:ignore
     except KeyboardInterrupt:
