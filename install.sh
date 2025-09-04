@@ -19,7 +19,7 @@ open_link "https://instagram.com/edux.devs" &>/dev/null
 sleep 4
 open_link "https://www.youtube.com/@edux-devs" &>/dev/null
 sleep 4
-open_link "https://tiktok.com/@edux.dev" &>/dev/null
+open_link "https://tiktok.com/@edux.devs" &>/dev/null
 sleep 4
 
 if [[ -e /data/data/com.termux ]]; then
