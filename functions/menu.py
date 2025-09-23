@@ -19,10 +19,10 @@ funcoes_painel = {
     "DDD Info": "Info",
     "DDI Info": "Info",
     "Instagram Info": "Info",
-    "IP Lookup": "Lookup",}
-'''
+    "IP Lookup": "Lookup",
     "RG Checker": "Checker",
-    "RG Forge": "Forge",
+    "RG Forge": "Forge"}
+'''
     "Telefone Básico Lookup": "Lookup"
 }'''
 

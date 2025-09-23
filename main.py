@@ -29,9 +29,28 @@ def importar_funcoes(pasta):
                 if callable(obj) and not nome.startswith("_"):
                     globals()[nome] = obj
 
+def login():
+    banner() #type:ignore
+    print('\033[1;32m~# \033[1;36mDigite o nome de usuário ➤ \033[0m', end='')
+    usern = input().strip()
+    print('\033[1;32m~# \033[1;36mDigite a senha ➤ \033[0m', end='')
+    passw = input().strip()
+
+    if usern == "Eduardo" and passw == "Edux":
+        return True
+    else:
+        print('\033[1;32m~# \033[1;31mUsername ou Password incorreto!\033[0m')
+        time.sleep(3)
+        return False
+
+
 def main():
-    func = {1:banco_query, 2:bin_query, 3:cartao_checker, 4:cartao_query, 5:cep_query, 6:cnpj_checker, 7:cnpj_forge, 8:cnpj_query, 9:covid19_query, 10:cpf_checker, 11:cpf_forge, 12:ddd_query, 13:ddi_query, 14:instagram_query, 15:ip_query} # type: ignore
+    func = {1:banco_query, 2:bin_query, 3:cartao_checker, 4:cartao_query, 5:cep_query, 6:cnpj_checker, 7:cnpj_forge, 8:cnpj_query, 9:covid19_query, 10:cpf_checker, 11:cpf_forge, 12:ddd_query, 13:ddi_query, 14:instagram_query, 15:ip_query, 16:rg_checker, 17:rg_forge} # type: ignore
     while True:
+        for i in [0,1,2,3]:
+            if i == 3: exit()
+            if not login(): continue
+            if login: break
         banner_menu() # type: ignore
         option = input().strip()
         if not option: continue
@@ -44,8 +63,8 @@ def main():
         str(func[int(option)]())
 
 if __name__ == '__main__': 
-    if os.path.exists('.installed'):
-        print("Execute o arquivo install.sh primeiro\n bash install.sh")
+    if not os.path.exists('.installed'):
+        print("\033[1;33m[!] Execute o arquivo install.sh primeiro\n\033[1;36m~$ bash install.sh")
         sys.exit(0)    
     importar_funcoes("functions")
     try: main(), exiting() #type:ignore
