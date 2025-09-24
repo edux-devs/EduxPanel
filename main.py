@@ -59,14 +59,16 @@ def main():
         str(func[int(option)]())
 
 if __name__ == '__main__': 
-    for i in [0,1,2,3]:
-        if i == 3: exit()
-        if not login(): continue
-        if login: break
     if not os.path.exists('.installed'):
         print("\033[1;33m[!] Execute o arquivo install.sh primeiro\n\033[1;36m~$ bash install.sh")
         sys.exit(0)    
     importar_funcoes("functions")
+    try:
+        for i in [0,1,2,3]:
+            if i == 3: exit()
+            if not login(): continue
+            if login: break
+    except: exiting() #type:ignore
     try: main(), exiting() #type:ignore
     except KeyboardInterrupt:
         print('\n\033[1;33m Programa interrompido pelo usuário')
