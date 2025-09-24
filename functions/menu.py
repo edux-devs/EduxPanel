@@ -21,7 +21,8 @@ funcoes_painel = {
     "Instagram Info": "Info",
     "IP Lookup": "Lookup",
     "RG Checker": "Checker",
-    "RG Forge": "Forge"}
+    "RG Forge": "Forge",
+    "TikTok info": "Info"}
 '''
     "Telefone Básico Lookup": "Lookup"
 }'''

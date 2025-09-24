@@ -4,6 +4,7 @@
 import time
 import requests
 import re
+import json
 
 try:
     from banner import banner
@@ -17,10 +18,6 @@ except ImportError:
     from functions.read_input import read_input #type:ignore
 
 def get_tiktok_profile(identifier):
-    """
-    Recebe um username ou secUid do TikTok e retorna informações públicas do perfil.
-    """
-    # Detecta se é secUid (geralmente começa com MS4w...) ou username
     if re.match(r'^MS4wLjAB', identifier):
         url = f"https://www.tiktok.com/@{identifier}"
     else:
@@ -44,23 +41,10 @@ def get_tiktok_profile(identifier):
         info = {}
 
         # IDs
-        match_uid = re.search(r'"uid":"([0-9]+)"', html)
+        match_id = re.search(r'"id":"([0-9]+)"', html)
         match_secuid = re.search(r'"secUid":"([A-Za-z0-9_-]+)"', html)
-        info['uid'] = match_uid.group(1) if match_uid else None
+        info['id'] = match_id.group(1) if match_id else None
         info['secUid'] = match_secuid.group(1) if match_secuid else None
-
-        json_match = re.search(r'<script id="SIGI_STATE" type="application/json">(.*?)</script>', html)
-        
-        if json_match:
-            try:
-                data = json.loads(json_match.group(1))
-                user_key = list(data['UserModule']['users'].keys())[0]
-                user_data = data['UserModule']['users'][user_key]
-                info['uid'] = user_data.get('id')
-            except Exception:
-                info['uid'] = None
-        else:
-            info['uid'] = None
 
         # Username
         match_username = re.search(r'"uniqueId":"([A-Za-z0-9_.]+)"', html)
@@ -72,11 +56,11 @@ def get_tiktok_profile(identifier):
 
         # Avatar
         match_avatar = re.search(r'"avatarLarger":"([^"]+)"', html)
-        info['avatar_url'] = match_avatar.group(1) if match_avatar else None
+        info['avatar_url'] = match_avatar.group(1).encode('utf-8').decode('unicode_escape') if match_avatar else None
 
         # Bio / descrição
         match_bio = re.search(r'"signature":"([^"]+)"', html)
-        info['bio'] = match_bio.group(1) if match_bio else None
+        info['bio'] = match_bio.group(1).encode('utf-8').decode('unicode_escape').encode('latin1').decode('utf-8') if match_bio else None
 
         # Seguidores, seguindo, curtidas, vídeos
         match_followers = re.search(r'"followerCount":(\d+)', html)
@@ -91,7 +75,7 @@ def get_tiktok_profile(identifier):
 
         # Link externo na bio (se existir)
         match_biolink = re.search(r'"bioLink":"([^"]+)"', html)
-        info['bio_link'] = match_biolink.group(1) if match_biolink else None
+        info['bio_link'] = match_biolink.group(1).encode('utf-8').decode('unicode_escape') if match_biolink else None
 
         return info
 
