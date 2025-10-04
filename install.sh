@@ -42,13 +42,13 @@ fi
 echo "Instalando os requisitos do programa..."
 python3 -m pip install --upgrade pip &>/dev/null
 if [[ -f requirements.txt ]]; then
-  python3 -m pip install -r requirements.txt
+  python3 -m pip install -r requirements.txt &>/dev/null
 else
   echo "Arquivo requirements.txt não encontrado."
 fi
 
 clear
-pip install -r requirements.txt
+pip install -r requirements.txt &>/dev/null
 touch .installed
 echo -e "\033[32mExecutando o programa principal...\033[0m"
 sleep 1
