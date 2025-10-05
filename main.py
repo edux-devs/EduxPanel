@@ -52,7 +52,7 @@ def main():
         if not option: continue
         if option.lower() in ['00', '0', '99', 'q']: return 0
         if not read_input('numeric', option): continue #type:ignore
-        if 98 > int(option) > 18: 
+        if 98 > int(option) > 19: 
             print(' opção inválida!')
             time.sleep(1)
             continue
