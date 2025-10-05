@@ -45,7 +45,7 @@ def login():
 
 
 def main():
-    func = {1:banco_query, 2:bin_query, 3:cartao_checker, 4:cartao_query, 5:cep_query, 6:cnpj_checker, 7:cnpj_forge, 8:cnpj_query, 9:covid19_query, 10:cpf_checker, 11:cpf_forge, 12:ddd_query, 13:ddi_query, 14:instagram_query, 15:ip_query, 16:rg_checker, 17:rg_forge, 18:tiktok_query} # type: ignore
+    func = {1:banco_query, 2:bin_query, 3:cartao_checker, 4:cartao_query, 5:cep_query, 6:cnpj_checker, 7:cnpj_forge, 8:cnpj_query, 9:covid19_query, 10:cpf_checker, 11:cpf_forge, 12:cpf_query, 13:ddd_query, 14:ddi_query, 15:instagram_query, 16:ip_query, 17:rg_checker, 18:rg_forge, 19:tiktok_query} # type: ignore
     while True:
         banner_menu() # type: ignore
         option = input().strip()

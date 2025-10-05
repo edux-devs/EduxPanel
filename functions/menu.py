@@ -15,6 +15,7 @@ funcoes_painel = {
     "CNPJ Info": "Info",
     "CPF Checker": "Checker",
     "CPF Forge": "Forge",
+    "CPF Info": "Info",
     "Covid19 Info": "Info",
     "DDD Info": "Info",
     "DDI Info": "Info",

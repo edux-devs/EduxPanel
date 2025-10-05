@@ -16,7 +16,7 @@ except:
     from functions.exiting import exiting  # type:ignore
 
 
-def onion_query():
+def cpf_query():
     session = requests.Session()
     # Configura proxy Tor (porta padrão: 9050)
     session.proxies = {
