@@ -3,6 +3,7 @@
 
 import requests #type:ignore
 import time
+import subprocess
 
 try:
     from banner import banner
@@ -15,6 +16,12 @@ except:
     from functions.read_input import read_input  # type:ignore
     from functions.exiting import exiting  # type:ignore
 
+def start_tor():
+    try:
+        tor_process = subprocess.Popen(['tor'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        time.sleep(10)
+        return tor_process
+    except FileNotFoundError: return None
 
 def cpf_query():
     session = requests.Session()
@@ -57,7 +64,9 @@ def cpf_query():
 
 
 if __name__ == '__main__':
-    try:
-        onion_query()
-    except KeyboardInterrupt:
-        exiting()  # type:ignore
+    tor_process = start_tor()
+    if tor_process:
+        try:
+            cpf_query()
+        except KeyboardInterrupt:
+            exiting()  #type:ignore

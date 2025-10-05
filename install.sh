@@ -39,6 +39,11 @@ if ! command -v python3 &>/dev/null; then
   [[ "$PKG_MANAGER" == "pkg" ]] || $PKG_MANAGER install -y python3-pip &>/dev/null
 fi
 
+if ! command -v tor &>/dev/null; then
+  echo "Instalando Tor"
+  $PKG_MANAGER install -y python3 &>/dev/null
+fi
+
 echo "Instalando os requisitos do programa..."
 python3 -m pip install --upgrade pip &>/dev/null
 if [[ -f requirements.txt ]]; then
