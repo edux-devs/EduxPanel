@@ -36,7 +36,7 @@ def login():
     print('\033[1;32m~# \033[1;36mDigite a senha ➤ \033[0m', end='')
     passw = input().strip()
 
-    if usern == "Eduardo" and passw == "Edux":
+    if usern == "EduxDevs" and passw == "Eduardo":
         return True
     else:
         print('\033[1;32m~# \033[1;31mUsername ou Password incorreto!\033[0m')
