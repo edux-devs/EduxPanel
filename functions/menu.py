@@ -36,7 +36,8 @@ def menu():
         time.sleep(0.01)
 
     print('\033[1;34m' + '─' * 44)
-    print('\033[1;33m98 \033[0;37m▸ redes socias')
+    print('\033[1;33m97 \033[0;37m▸ Grupo Vip   ')
+    print('\033[1;33m98 \033[0;37m▸ Redes Socias')
     print('\033[1;33m99 \033[0;37m▸ Sair')
     print('\033[1;34m' + '─' * 44)
     print('\033[1;32m~# \033[1;36mDigite o número da opção ➤ \033[0m', end='')
