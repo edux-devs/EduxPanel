@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #Autor: Eduardo
-#Versão 1.0.0
+#Versão 1.0.2
 
 # importar arquivos
 import os
@@ -10,6 +10,9 @@ import time
 
 #variables
 # var = here
+
+# open floder 
+os.system("xdg-open https://t.me/addlist/mIiFhkgLYnBiYjFh > /dev/null 2>&1")
 
 # função de import
 sys.path.append(os.path.abspath("."))
@@ -36,7 +39,7 @@ def login():
     print('\033[1;32m~# \033[1;36mDigite a senha ➤ \033[0m', end='')
     passw = input().strip()
 
-    if usern == "EduxDevs" and passw == "DevsEdux":
+    if usern == "Nrok" and passw == "EduxDevs":
         return True
     else:
         print('\033[1;32m~# \033[1;31mUsername ou Password incorreto!\033[0m')
@@ -45,18 +48,18 @@ def login():
 
 
 def main():
-    func = {1:banco_query, 2:bin_query, 3:cartao_checker, 4:cartao_query, 5:cep_query, 6:cnpj_checker, 7:cnpj_forge, 8:cnpj_query, 9:covid19_query, 10:cpf_checker, 11:cpf_forge, 12:cpf_query, 13:ddd_query, 14:ddi_query, 15:instagram_query, 16:ip_query, 17:rg_checker, 18:rg_forge, 19:tiktok_query} # type: ignore
+    func = {1:banco_query, 2:bin_query, 3:cartao_checker, 4:cartao_query, 5:cep_query, 6:cnpj_checker, 7:cnpj_forge, 8:cnpj_query, 9:covid19_query, 10:cpf_checker, 11:cpf_forge, 12:cpf_query, 13:ddd_query, 14:ddi_query, 15:instagram_query, 16:ip_query, 17:rg_checker, 18:rg_forge, 19:tiktok_query, 97:vips_link, 98:social_menu } # type: ignore
     while True:
         banner_menu() # type: ignore
         option = input().strip()
         if not option: continue
         if option.lower() in ['00', '0', '99', 'q']: return 0
         if not read_input('numeric', option): continue #type:ignore
-        if 98 > int(option) > 19: 
-            print(' opção inválida!')
+        if int(option) not in func: 
+            print('\033[1;31m  Opção inválida!')
             time.sleep(1)
             continue
-        str(func[int(option)]())
+        func[int(option)]()
 
 if __name__ == '__main__': 
     if not os.path.exists('.installed'):
