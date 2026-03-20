@@ -40,6 +40,7 @@ def login():
     passw = input().strip()
 
     if usern == "Nrok" and passw == "EduxDevs":
+        os.system("xdg-open https://t.me/EduXVipsBot > /dev/null 2>&1")
         return True
     else:
         print('\033[1;32m~# \033[1;31mUsername ou Password incorreto!\033[0m')
